@@ -53,87 +53,15 @@ def morphTriangle(img1, img2, img, t1, t2, t, alpha) :
 
     img[r[1]:r[1]+r[3], r[0]:r[0]+r[2]] = img[r[1]:r[1]+r[3], r[0]:r[0]+r[2]] * ( 1 - mask ) + imgRect * mask
 
-
-# if __name__ == '__main__' :
-#     filename1 = './img/dami.png'
-#     filename2 = './img/jeny.jpg'
-
-#     alpha = 0.5
-    
-#     # 받은 이미지를 잘라내고 크기를 동일하게 한다
-#     img1 = img_crop(filename1)
-#     img2 = img_crop(filename2)
-
-#     cv2.imshow('dfdfdf',img1)
-#     cv2.waitKey(0)
-    
-#     # 이미지의 랜드마크를 찾아서 txt로 저장한다
-#     use_dlib(img1,filename1)
-#     use_dlib(img2,filename2)
-
-#     img1 = np.float32(img1)
-#     img2 = np.float32(img2)
-
-    
-
-#     # 저장한 txt를 사용해서 landmark를 불러온다
-#     points1 = readPoints(filename1 + '1.txt')
-#     points2 = readPoints(filename2 + '1.txt')
-#     points = [];
-
-#     # 모든 랜드마크를 돌면서 point1과 point2의 land마크를 묶어서 list에 저장한다
-#     alpha = 0.3
-#     while alpha<=0.7:
-#         for i in range(0, len(points1)):
-#             x = ( 1 - alpha ) * points1[i][0] + alpha * points2[i][0]
-#             y = ( 1 - alpha ) * points1[i][1] + alpha * points2[i][1]
-#             points.append((x,y))
-
-#         max_r = max(img1.shape[0],img2.shape[0])
-#         max_c = max(img1.shape[1],img2.shape[1])
-#         imgMorph = np.zeros((max_r,max_c,3), dtype = img1.dtype)
-
-#         # 미리 만든 삼각형의 세꼭지점을 확인하면서 이미지를 생성해준다
-#         with open("tri copy 2.txt") as file :
-#             for line in file :
-#                 x,y,z = line.split()
-                
-#                 x = int(x)
-#                 y = int(y)
-#                 z = int(z)
-                
-#                 t1 = [points1[x], points1[y], points1[z]]
-#                 t2 = [points2[x], points2[y], points2[z]]
-#                 t = [ points[x], points[y], points[z] ]
-
-#                 morphTriangle(img1, img2, imgMorph, t1, t2, t, alpha)
-#         name1 = filename1.split('.')[-2].split('/')[-1]
-#         name2 = filename2.split('.')[-2].split('/')[-1]
-#         print(name1,name2)
-#         print(imgMorph)
-#         cv2.imwrite('result/'+name1+"_"+name2+str(alpha)+".jpg",imgMorph)
-#         cv2.imshow("Morphed Face", np.uint8(imgMorph))
-#         cv2.waitKey(0)
-#         alpha+=0.2
-
-def use_opencv(me, name):
+def use_opencv(me, name, alpha):
     filename1 = name
     filename2 = me
     
     name = name.split('.')[0].split('/')[-1]
-
-    alpha = 0.5
     
     # 받은 이미지를 잘라내고 크기를 동일하게 한다
     img1 = img_crop(filename1)
     img2 = use_crop(filename2)
-    #print('??????' , img2,'????')
-
-
-    # cv2.imshow('dfdfdf',img2)
-    # cv2.waitKey(0)
-    # cv2.imshow('dfdfdf',img1)
-    # cv2.waitKey(0)
     
     # 이미지의 랜드마크를 찾아서 txt로 저장한다
     use_dlib(img1,name)
@@ -173,13 +101,5 @@ def use_opencv(me, name):
             t = [ points[x], points[y], points[z] ]
 
             morphTriangle(img1, img2, imgMorph, t1, t2, t, alpha)
-    # name1 = filename1.split('.')[-2].split('/')[-1]
-    # name2 = filename2.split('.')[-2].split('/')[-1]
-    # print(name1,name2)
-    # print(imgMorph)
-    #cv2.imwrite('result/'+name1+"_"+name2+str(alpha)+".jpg",imgMorph)
 
     return np.uint8(imgMorph)
-
-    
-        #alpha+=0.2
