@@ -82,18 +82,36 @@ def merge(request):
 def mixed(request, name):
     arr = request.session['me']
     me = np.array(arr, dtype = np.uint8)
-    print(name)
+    #print(name)
 
-    img = use_opencv(me, 'page/image/'+name+'.jpg')
+    me_re = use_opencv(me, 'page/image/'+name+'.jpg',1)
+    img_3 = use_opencv(me, 'page/image/'+name+'.jpg',0.3)
+    img_5 = use_opencv(me, 'page/image/'+name+'.jpg',0.5)
+    img_7 = use_opencv(me, 'page/image/'+name+'.jpg',0.7)
+    me_no = use_opencv(me, 'page/image/'+name+'.jpg',0.0)
 
     # 색상을 반전시켜준다
-    b,g,r = cv2.split(img)
-    img = cv2.merge([r,g,b])
+    b,g,r = cv2.split(me_re)
+    me_re = cv2.merge([r,g,b])
+    me_re = use_base64(me_re)
 
-    img = use_base64(img)
+    b,g,r = cv2.split(img_3)
+    img_3 = cv2.merge([r,g,b])
+    img_3 = use_base64(img_3)
 
-    return render(request, 'mix.html',{'me':img})
+    b,g,r = cv2.split(img_5)
+    img_5 = cv2.merge([r,g,b])
+    img_5 = use_base64(img_5)
 
+    b,g,r = cv2.split(img_7)
+    img_7 = cv2.merge([r,g,b])
+    img_7 = use_base64(img_7)
+
+    b,g,r = cv2.split(me_no)
+    me_no = cv2.merge([r,g,b])
+    me_no = use_base64(me_no)
+
+    return render(request, 'mix.html',{'me_re':me_re,'me_3':img_3,'me_5':img_5,'me_7':img_7,'me_no':me_no})
 
     #cv2.imshow("Morphed Face", me)
     #cv2.waitKey(0)
