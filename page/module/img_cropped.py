@@ -38,7 +38,7 @@ def use_crop(img):
         dst = img_rgb_copy[newTop:newBottom, newLeft:newRight]
         
         # face가 있는 부분의 크기를 항상 500 * 500으로 설정한다
-        dst = cv2.resize(dst, dsize=(500,500),interpolation=cv2.INTER_AREA)
+        dst = cv2.resize(dst, dsize=(250,250),interpolation=cv2.INTER_AREA)
 
         # cv2.imshow("Morphed Face", dst)
         # cv2.waitKey(0)

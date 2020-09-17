@@ -1,17 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block body %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Mix</h1>
-
-    <div class="upload" style="float: left;">
-        <img src="{{ me }}" alt=""> 
+<h1>Mix</h1>
+<div class='container'>
+    <div>
+        <img src="{{ me_re }}" alt=""> 
     </div>
+    <div>
+        <img src="{{ me_7 }}" alt=""> 
+    </div>
+    <div>
+        <img src="{{ me_5 }}" alt=""> 
+    </div>
+    <div>
+        <img src="{{ me_3 }}" alt=""> 
+    </div>
+    <div>
+        <img src="{{ me_no }}" alt=""> 
+    </div>
+</div>
 
-</body>
-</html>
+{% endblock %}
