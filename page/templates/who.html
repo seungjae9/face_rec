@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block body %}
+<style>
+    .upload {
+        box-sizing: border-box;
+        width: 200px;
+        height: 200px;
+        margin-left: 100px;
+        margin-right: 50px;
+        text-align: center;
+        background-color: grey ;
+    }
+</style>
+
+<div class="container">
+    <div style="text-align: center;">
+        <h1>가장 닮은 연예인은....</h1>
+    </div>
+
+    <div class="upload" style="float: left;">
+        <img src="{{ img_src1.image }}" style="width: 200px;" alt=""> 
+        <a href="{% url 'page:mixed' img_src1.name %}">
+            <button   style="margin-top: 2%;" type="submit" class="btn btn-info">합성 해보기 > </button>
+        </a>
+    </div>
+
+    <div class="upload" style="float: left; ">
+        <img src="{{ img_src2.image }}" style="width: 200px;" alt="">  
+        <a href="{% url 'page:mixed' img_src2.name %}">
+            <button   style="margin-top: 2%;" type="submit" class="btn btn-info">합성 해보기 > </button>
+        </a>
+    </div>
+
+    <div class="upload" style="float: left;">
+        <img src="{{ img_src3.image }}" style="width: 200px;" alt="">
+        <a href="{% url 'page:mixed' img_src3.name %}">
+            <button   style="margin-top: 2%;" type="submit" class="btn btn-info">합성 해보기 > </button>
+        </a>
+    </div>
+
+</div>
+
+
+{% endblock %}

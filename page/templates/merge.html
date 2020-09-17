@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block body %}
+<style>
+    .upload {
+        box-sizing: border-box;
+        width: 200px;
+        height: 200px;
+        margin-left: 100px;
+        margin-right: 50px;
+        text-align: center;
+        background-color: grey ;
+    }
+</style>
+
+<div class="container">
+    <div style="text-align: center;">
+        <h1>합성 완료</h1>
+    </div>
+    <div class="upload" style="float: left;">
+        자신의 얼굴
+    </div>
+    <div class="upload" style="float: left; ">
+        연예인 얼굴
+    </div>
+    <div class="upload" style="float: left;">
+        합성 완료
+    </div>
+
+
+    <form action="{% url 'page:merge' %}" >
+        <div class="text-center" style="margin-bottom: 1%;">
+            <button type="submit" class="btn btn-info">공유하기 > </button>
+        </div>
+    </form>
+    <form action="{% url 'page:who' %}" >
+        <div class="text-center" style="margin-bottom: 1%;">
+            <button type="submit" class="btn btn-info">< 다시 고르기 </button>
+        </div>
+    </form>
+</div>
+
+iv>
+            
+
+
+{% endblock %}
