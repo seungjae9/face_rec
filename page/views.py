@@ -67,9 +67,7 @@ def who(request):
             return render(request, 'who.html', 
                             {
                             # 'me':me,
-                            'img_src1': top3[0],
-                            'img_src2': top3[1],
-                            'img_src3': top3[2],
+                            'img_src': [top3[0], top3[1], top3[2]]
                             }
                             )
     else:
