@@ -64,15 +64,15 @@ def use_opencv(me, name, alpha):
     img2 = use_crop(filename2)
     
     # 이미지의 랜드마크를 찾아서 txt로 저장한다
-    use_dlib(img1,name)
-    use_dlib(img2,'me')
+    points1 = use_dlib(img1,name)
+    points2 = use_dlib(img2,'me')
 
     img1 = np.float32(img1)
     img2 = np.float32(img2)
 
     # 저장한 txt를 사용해서 landmark를 불러온다
-    points1 = readPoints(name + '1.txt')
-    points2 = readPoints('me' + '1.txt')
+    # points1 = readPoints(name + '1.txt')
+    # points2 = readPoints('me' + '1.txt')
     points = [];
 
     # 모든 랜드마크를 돌면서 point1과 point2의 land마크를 묶어서 list에 저장한다
