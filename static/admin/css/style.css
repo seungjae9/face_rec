@@ -1,33 +1,59 @@
 @charset "utf-8";
-/* body {
-    display:flex;
-    flex-direction : column;
-    justify-content : center;
-    align-content : center;
-    margin-left: 50px;
-} */
+
 h1 {
+    color:black;
+}
+.tri{
+    width: 0px;
+    height: 0px;
+    border-bottom: 100px solid transparent;
+    border-left: 1300px solid grey;
+}
+.subtitle{
+    padding-left: 40px;
+    height: 0px;
+}
+.container{
+    display:flex;
+    justify-content: center;
+}
+.all{
+    display:flex;
+}
+.left{
+    border : 5px solid grey;
+    border-radius:25px;
+    background-color: rgb(128,128,128,0.7);
+}
+.right{
+    width:40%
+}
+.navi{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    height:80px;
+
+    background-color: rgb(128,128,128);
     color:red;
 }
-.container{
-    display:flex;
-    flex-direction:row;
+.single{
+    margin: 5px;
 }
-/* a {
-    text-decoration: none;
-    color:rgb(0, 0, 0);
+.back_ground{
+    height: 100%;
+    /* background-color: greenyellow; */
+    background-image: url('Zipcy.jpg');
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:cover;
 }
-.home {
-    width:90px;
-    color:rgb(9, 8, 97);
-    border:2px solid black;
-    border-radius:15px
+
+html, body{
+    height:100%
 }
-.container{
-    display:flex;
-    justify-content : flex-start;;
-    color:rgb(151, 5, 5);
+
+img{
+    border-radius:30%
 }
-.container_right{
-    margin-left: 20px;
-} */
