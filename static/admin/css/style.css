@@ -1,4 +1,7 @@
 @charset "utf-8";
+.base{
+    height: 100%;
+}
 
 h1 {
     color:black;
@@ -45,6 +48,13 @@ h1 {
     height: 100%;
     /* background-color: greenyellow; */
     background-image: url('Zipcy.jpg');
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:cover;
+}
+.who_back_ground{
+    height: 100%;
+    background-image: url('Zipcy_who.jpg');
     background-repeat:no-repeat;
     background-position:center;
     background-size:cover;
