@@ -80,13 +80,12 @@ def merge(request):
 def mixed(request, name):
     arr = request.session['me']
     me = np.array(arr, dtype = np.uint8)
-    #print(name)
 
-    me_re = use_opencv(me, 'page/image/'+name+'.jpg',1)
+    me_re = use_crop(me)
     img_3 = use_opencv(me, 'page/image/'+name+'.jpg',0.3)
     img_5 = use_opencv(me, 'page/image/'+name+'.jpg',0.5)
     img_7 = use_opencv(me, 'page/image/'+name+'.jpg',0.7)
-    me_no = use_opencv(me, 'page/image/'+name+'.jpg',0.0)
+    me_no = img_crop('page/image/'+name+'.jpg')
 
     # 색상을 반전시켜준다
     b,g,r = cv2.split(me_re)
@@ -113,3 +112,45 @@ def mixed(request, name):
 
     #cv2.imshow("Morphed Face", me)
     #cv2.waitKey(0)
+
+def mixed_all(request, name1, name2, name3):
+    arr = request.session['me']
+    me = np.array(arr, dtype = np.uint8)
+    
+    me_re = use_crop(me)
+    img_1 = use_opencv(me, 'page/image/'+name1+'.jpg',0.5)
+    img_2 = use_opencv(me, 'page/image/'+name2+'.jpg',0.5)
+    img_3 = use_opencv(me, 'page/image/'+name3+'.jpg',0.5)
+    me_no_1 = img_crop('page/image/'+name1+'.jpg')
+    me_no_2 = img_crop('page/image/'+name2+'.jpg')
+    me_no_3 = img_crop('page/image/'+name3+'.jpg')
+
+    b,g,r = cv2.split(me_re)
+    me_re = cv2.merge([r,g,b])
+    me_re = use_base64(me_re)
+
+    b,g,r = cv2.split(img_1)
+    img_1 = cv2.merge([r,g,b])
+    img_1 = use_base64(img_1)
+
+    b,g,r = cv2.split(img_2)
+    img_2 = cv2.merge([r,g,b])
+    img_2 = use_base64(img_2)
+
+    b,g,r = cv2.split(img_3)
+    img_3 = cv2.merge([r,g,b])
+    img_3 = use_base64(img_3)
+
+    b,g,r = cv2.split(me_no_1)
+    me_no_1 = cv2.merge([r,g,b])
+    me_no_1 = use_base64(me_no_1)
+
+    b,g,r = cv2.split(me_no_2)
+    me_no_2 = cv2.merge([r,g,b])
+    me_no_2 = use_base64(me_no_2)
+
+    b,g,r = cv2.split(me_no_3)
+    me_no_3 = cv2.merge([r,g,b])
+    me_no_3 = use_base64(me_no_3)
+
+    return render(request, 'mix_all.html',{'me':me_re,'me_1':img_1,'me_2':img_2,'me_3':img_3,'me_no_1':me_no_1,'me_no_2':me_no_2,'me_no_3':me_no_3})

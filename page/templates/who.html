@@ -32,6 +32,11 @@
             </div>
         {% endfor %}
     </div>
+    <a href="{% url 'page:mixed_all' img_src.0.name img_src.1.name img_src.2.name%}">
+        <button style="margin-top: 2%;" type="submit" class="btn btn-info">
+            <span>합성 해보기 ></span>
+        </button>
+    </a>
 </div>
 
 

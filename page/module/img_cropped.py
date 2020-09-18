@@ -4,7 +4,6 @@ import cv2
 # face를 찾아서 이미지를 일정한 크기로 자르고 크기를 모두 동일하게 만들어주는 함수
 def img_crop(title):
     img = face_recognition.load_image_file(title)
-    print(len(img))
     return use_crop(img)
 
 def use_crop(img):
