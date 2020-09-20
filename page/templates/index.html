@@ -2,53 +2,99 @@
 {% load bootstrap4 %}
 {% block body %}
 <style>
-    .upload {
+	.upload {
         box-sizing: border-box;
-        width: 120px;
-        height: 150px;
-        margin: 20px auto;
-        background-color: grey ;
+        width: 210px;
+        height: 210px;
+		background-color: beige ;
+		border-radius:30%
     }
+	#input_wrapper { 
+		border: 1px solid rgb(19, 58, 71);
+		padding: 5px 20px;
+		position: absolute;
+		top: 30%;
+		left: 50%;
+		width: 500px; height: 550px;
+		margin-left: -220px;
+		margin-top : -170px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		background-color: ghostwhite;
+	} 
+	button{
+		width: 85px;
+		float: right;
+		margin-top: 5%;
+	}
+
+	.filebox label {
+		display: inline-block;
+		padding: .5em .75em;
+		color: rgb(65, 62, 62);
+		font-size: inherit;
+		line-height: normal;
+		vertical-align: middle;
+		background-color: #abe6ab;
+		cursor: pointer;
+		border: 1px solid #abe6ab;
+		border-radius: .25em;
+		-webkit-transition: background-color 0.2s;
+		transition: background-color 0.2s;
+	}
+
+	.filebox label:hover {
+		background-color: #abe6ab;
+	}
+
+	.filebox label:active {
+		background-color: #abe6ab;
+	}
+
+	.filebox input[type="file"] {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		border: 0;
+	}
 </style>
-{% comment %} 
-<div class='navi'>
-	<div class ='main_logo'>
-    	안녕
-	</div>
-</div> {% endcomment %}
 
+<div id="input_wrapper" style="text-align: center;">
+		<form action="{% url 'page:who' %}" class="form" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<div style="margin-bottom: 30%;">
+			<h5>성별체크</h5>
+			<div class="form-check-inline">
+				<input class="form-check-input" type="radio" name="sex" id="exampleRadios1" value="woman" checked>
+				<label class="form-check-label" for="exampleRadios1">
+					여자
+				</label>
+			</div>
+			<div class="form-check-inline">
+				<input class="form-check-input" type="radio" name="sex" id="exampleRadios2" value="man">
+				<label class="form-check-label" for="exampleRadios2">
+					남자
+				</label>
+			</div>
+			<div class="filebox">
+				<label for="profile_pt">사진을 업로드해 주세요</label>
+				<input type="file" name="profile_pt" id="profile_pt" onchange="previewImage(this,'View_area')">
+			</div>
+		</div>
+		<div class="upload">
+			<div id='View_area'>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-info btn-sm" style="margin-left: 15px">누굴까?</button>
+	</form>
+</div>  
 
-<div style="text-align: center;">
-    <h1 style="margin-top: 70px;">가장 닮은 연예인</h1>
-    <div style="margin-top: 100px;">
-        <h3>성별 체크</h3>
-        <form action="{% url 'page:who' %}" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="form-check-inline">
-                <input class="form-check-input" type="radio" name="sex" id="exampleRadios1" value="woman" checked>
-                <label class="form-check-label" for="exampleRadios1">
-                    여자
-                </label>
-            </div>
-            <div class="form-check-inline">
-                <input class="form-check-input" type="radio" name="sex" id="exampleRadios2" value="man">
-                <label class="form-check-label" for="exampleRadios2">
-                    남자
-                </label>
-            </div>
-            <div>
-                <input type="file" name="profile_pt" id="profile_pt" onchange="previewImage(this,'View_area')">
-            </div>
-            <div class="upload">
-                
-                <div id='View_area'>
-                </div>
-                
-            </div>
-            <button type="submit" class="btn btn-info btn-sm" style="margin-left: 15px">누굴d까?</button>
-        </form>
-    </div>
-</div>
 
 <script> 
 function previewImage(targetObj, View_area) {
@@ -95,8 +141,8 @@ function previewImage(targetObj, View_area) {
 			img.id = "prev_" + View_area;
 			img.classList.add("obj");
 			img.file = file;
-			// img.style.width = '100px'; 
-			// img.style.height = '100px';
+			img.style.width = '210px'; 
+			img.style.height = '210px';
 			preview.appendChild(img);
 			if (window.FileReader) { // FireFox, Chrome, Opera 확인.
 				var reader = new FileReader();
