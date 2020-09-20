@@ -57,7 +57,7 @@ def who(request):
                     img_src = use_base64(image)
 
                     who_top.append(
-                        {'name': json_data['woman'][i]['woman'],
+                        {'name': json_data['woman'][i]['name'],
                         'how': (fr.face_distance(np.array(enc), enc_me)).tolist(),
                         'image': img_src,
                         })
