@@ -29,7 +29,7 @@
                     <img src="{{ img.image }}" class="card-img-top" alt="wannabe">
                     <div class="card-body d-flex justify-content-center">
                         <a href="{% url 'page:mixed' img.name %}">
-                            <button   style="margin-top: 2%;" type="submit" class="btn btn-info">
+                            <button   style="margin-top: 2%;" type="submit" class="btn btn-dark">
                                 <span>합성 해보기 ></span>
                             </button>
                         </a>
@@ -37,11 +37,14 @@
                 </div>
             {% endfor %}
         </div>
-        <a href="{% url 'page:mixed_all' img_src.0.name img_src.1.name img_src.2.name%}">
-            <button style="margin-top: 2%;" type="submit" class="btn btn-info">
-                <span>합성 해보기 ></span>
-            </button>
-        </a>
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'page:mixed_all' img_src.0.name img_src.1.name img_src.2.name%}">
+                <button style="margin-top: 2%; font-weight: bold;" type="submit" class="btn btn-light">
+                    모든 결과 보기 >
+                </button>
+            </a>
+        </div>
+         <br/>
     </div>
 </div>
 
