@@ -39,15 +39,23 @@ h1 {
     height:80px;
 
     background-color: rgb(128,128,128);
-    color:red;
+    color:blue;
 }
 .single{
     margin: 5px;
 }
-.back_ground{
+
+.mix_one_back_ground{
     height: 100%;
-    /* background-color: greenyellow; */
-    background-image: url('Zipcy.jpg');
+    background-image: url('Zipcy_one.jpg');
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:cover;
+}
+
+.mix_all_back_ground{
+    height: 100%;
+    background-image: url('Zipcy2.jpg');
     background-repeat:no-repeat;
     background-position:center;
     background-size:cover;
