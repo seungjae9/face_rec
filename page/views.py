@@ -31,7 +31,7 @@ def who(request):
 
         who_top = []
         # 전체 배우 데이터
-        file_path = "sample.json"
+        file_path = "actor.json"
         with open(file_path, "r") as json_file:
             json_data = json.load(json_file)
             if sex == 'man':
@@ -57,7 +57,7 @@ def who(request):
                     img_src = use_base64(image)
 
                     who_top.append(
-                        {'name': json_data['woman'][i]['woman'],
+                        {'name': json_data['woman'][i]['name'],
                         'how': (fr.face_distance(np.array(enc), enc_me)).tolist(),
                         'image': img_src,
                         })
