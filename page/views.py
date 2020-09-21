@@ -16,6 +16,12 @@ def who(request):
         sex = request.POST.get('sex')
         me = fr.load_image_file(request.FILES['profile_pt'].file)
 
+        me = use_crop(me)
+
+        b,g,r = cv2.split(me)
+        me = cv2.merge([r,g,b])
+        #me = use_base64(me)
+
         # session에 저장하기 위해 list로 변경
         list_me = me.tolist()
         # me로 저장
